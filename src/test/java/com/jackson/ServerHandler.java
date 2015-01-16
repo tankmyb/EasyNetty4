@@ -5,6 +5,16 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
 public class ServerHandler extends SimpleChannelInboundHandler<Person> {
+	@Override
+	public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
+		System.out.println("===========connect");
+		super.channelRegistered(ctx);
+	}
+	@Override
+	public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
+		// TODO Auto-generated method stub
+		super.channelUnregistered(ctx);
+	}
 	AtomicInteger a = new AtomicInteger();
 @Override
 public void channelRead0(ChannelHandlerContext ctx, Person msg) throws Exception {
