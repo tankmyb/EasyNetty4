@@ -29,11 +29,11 @@ public class EasyNettyServer implements IEasyNettyServer{
 
 			@Override
 			protected void initChannel(SocketChannel ch) throws Exception {
-				 ChannelPipeline p = ch.pipeline();
-				 ch.pipeline().addLast("frameEncoder",new ProtobufVarint32LengthFieldPrepender());
-					ch.pipeline().addLast("encoder", new ProtobufEncoder());
-					ch.pipeline().addLast("frameDecoder", new ProtobufVarint32FrameDecoder());
-				ch.pipeline().addLast("decoder", new ProtobufDecoderEx());
+				 ch.pipeline().addLast("frameEncoder",new ProtobufEncoderEx());
+					ch.pipeline().addLast("frameDecoder",
+							new ProtobufVarint32FrameDecoder());
+					ch.pipeline().addLast("decoder",
+							new ProtobufDecoderEx());
 			}
         	 
          });
